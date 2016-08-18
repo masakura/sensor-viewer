@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webapp7</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+
+    <section id="index" style="display: none">
+      <p>
+        以下のセンサーが登録されています。
+      </p>
+      <ul id="sensor-index" class="list-group">
+      </ul>
+      <script id="sensor-list-item-template" type="text/template">
+        <li class="list-group-item">
+          <a href="#<%- name %>" data-name="<%- name %>" class="select-sensor"><%- name %></a>
+        </li>
+      </script>
+    </section>
+
+    <section id="add" style="display: none">
+      <button id="add-sensor" class="btn btn-primary">
+        Add sensor [<span class="sensor-name"></span>]
+      </button>
+      <p>
+        このセンサーはまだ登録されていません。今後センサーを利用するために Add ボタンをクリックしてください。
+      </p>
+    </section>
+
+    <section id="sensor" style="display: none">
+      <h3><span class="sensor-name" ></span></h3>
+      <button id="load" class="btn btn-primary">Load</button>
+      <canvas id="graph-area" height="450" width="600"></canvas>
+    </section>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap/js/affix.js"></script>
+    <script src="/bower_components/bootstrap/js/alert.js"></script>
+    <script src="/bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="/bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="/bower_components/bootstrap/js/modal.js"></script>
+    <script src="/bower_components/bootstrap/js/transition.js"></script>
+    <script src="/bower_components/bootstrap/js/button.js"></script>
+    <script src="/bower_components/bootstrap/js/popover.js"></script>
+    <script src="/bower_components/bootstrap/js/carousel.js"></script>
+    <script src="/bower_components/bootstrap/js/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap/js/collapse.js"></script>
+    <script src="/bower_components/bootstrap/js/tab.js"></script>
+    <!-- endbuild -->
+
+    <script src="//cdn.mlkcca.com/v0.6.0/milkcocoa.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.min.js"></script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/sensor.js"></script>
+    <script src="scripts/chart-utility.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
