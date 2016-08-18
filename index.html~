@@ -22,33 +22,8 @@
   </head>
   <body>
 
-    <section id="index" style="display: none">
-      <p>
-        以下のセンサーが登録されています。
-      </p>
-      <ul id="sensor-index" class="list-group">
-      </ul>
-      <script id="sensor-list-item-template" type="text/template">
-        <li class="list-group-item">
-          <a href="#<%- name %>" data-name="<%- name %>" class="select-sensor"><%- name %></a>
-        </li>
-      </script>
-    </section>
-
-    <section id="add" style="display: none">
-      <button id="add-sensor" class="btn btn-primary">
-        Add sensor [<span class="sensor-name"></span>]
-      </button>
-      <p>
-        このセンサーはまだ登録されていません。今後センサーを利用するために Add ボタンをクリックしてください。
-      </p>
-    </section>
-
-    <section id="sensor" style="display: none">
-      <h3><span class="sensor-name" ></span></h3>
-      <button id="load" class="btn btn-primary">Load</button>
-      <canvas id="graph-area" height="450" width="600"></canvas>
-    </section>
+    <button id="load" class="btn btn-primary">Load</button>
+    <canvas id="graph-area" height="450" width="600"></canvas>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -77,8 +52,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.min.js"></script>
 
     <!-- build:js scripts/main.js -->
-    <script src="scripts/sensor.js"></script>
-    <script src="scripts/chart-utility.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>
