@@ -1,5 +1,18 @@
 (() => {
-  let sensorName = window.location.hash.replace(/^#/, '');
+  function getSensorName() {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (hash) {
+      return hash;
+    }
+
+    if (location.hostname !== 'localhost') {
+      return location.pathname.replace(/^\//, '');
+    }
+
+    return '';
+  }
+
+  let sensorName = getSensorName();
 
   const store = new SensorStore('sensors');
   const sensor = new SensorFactory('readirndedjx.mlkcca.com').sensor(sensorName);
