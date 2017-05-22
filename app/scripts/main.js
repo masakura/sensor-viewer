@@ -82,4 +82,6 @@
       router.showAdd();
     }
   });
+
+  navigator.serviceWorker.register('/sw.js');
 })();
