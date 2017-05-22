@@ -32,6 +32,9 @@
     showSensor() {
       this.hide();
       $('#sensor').show();
+
+      sensor.today()
+        .then(data => drawer.draw(data));
     },
     showAdd() {
       this.hide();
