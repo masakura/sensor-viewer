@@ -18,6 +18,7 @@
   const sensor = new SensorFactory('readirndedjx.mlkcca.com').sensor(sensorName);
   const drawer = ChartDrawer.fromSelector('#graph-area');
   const itemTemplate = _.template($('#sensor-list-item-template').text());
+  let current;
 
   const router = {
     hide() {
@@ -33,18 +34,32 @@
       this.hide();
       $('#sensor').show();
 
-      sensor.today()
-        .then(data => drawer.draw(data));
+      sensor.today().then(data => this.update(data));
+    },
+    update(data) {
+      current = data;
+      $('#date').text(data.date);
+      drawer.draw(data);
     },
     showAdd() {
       this.hide();
       $('#add').show();
+    },
+    prev() {
+      current && current.prev().then(data => this.update(data));
+    },
+    next() {
+      current && current.next().then(data => this.update(data));
     }
   };
 
-  $(document).on('click', '#load', () => {
-    sensor.today()
-      .then(data => drawer.draw(data));
+  $(document).on('click', '#prev', (ev) => {
+    router.prev();
+    ev.preventDefault();
+  });
+  $(document).on('click', '#next', (ev) => {
+    router.next();
+    ev.preventDefault();
   });
 
   $(document).on('click', '#add-sensor', () => {

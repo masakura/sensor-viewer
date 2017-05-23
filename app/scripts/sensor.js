@@ -42,8 +42,34 @@ const {SensorStore, SensorFactory, Sensor} = (() => {
     }
 
     today() {
-      return loadMilkcocoa(this.dataStore, new Date())
-        .then(messages => messages.map(convert).map(filter).reverse());
+      const c = new Date();
+      const today = new Date(c.getFullYear(), c.getMonth(), c.getDate());
+      return this.load(today);
+    }
+
+    load(date) {
+      return loadMilkcocoa(this.dataStore, date)
+        .then(messages => messages.map(convert).map(filter).reverse())
+        .then(data => this.wrap(data, date));
+    }
+
+    wrap(data, date) {
+      const that = this;
+
+      return Object.assign(data, {
+        date,
+        reload() {
+          return that.load(date);
+        },
+        next() {
+          const next = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+          return that.load(next);
+        },
+        prev() {
+          const prev = new Date(date.getTime() - 24 * 60 * 60 * 1000);
+          return that.load(prev);
+        },
+      });
     }
   }
 
