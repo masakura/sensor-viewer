@@ -21,10 +21,12 @@ const {ChartUtility, ChartDrawer} = (() => {
   }
 
   function graph(context, data) {
-    new Chart(context, {
+    const chart = graph.chart || (graph.chart = new Chart(context, {
       type: 'line',
-      data
-    });
+      data,
+    }));
+    Object.assign(chart.data, data);
+    chart.update();
   }
 
   function convertToChart(data) {
