@@ -68,14 +68,6 @@
     router.showSensor();
   });
 
-  $(document).on('click', '.select-sensor', function () {
-    sensorName = $(this).data('name');
-
-    router.showSensor();
-
-    return false;
-  });
-
   $(document).ready(() => {
     $('.sensor-name').text(sensorName);
 
