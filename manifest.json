@@ -1,0 +1,12 @@
+{
+  "lang": "ja",
+  "name": "Physical Web Sensor",
+  "short_name": "sensor",
+  "icons": [{
+    "src": "/apple-touch-icon.png",
+    "sizes": "180x180",
+    "type": "image/png"
+  }],
+  "start_url": "https://j21.me",
+  "display": "standalone"
+}
