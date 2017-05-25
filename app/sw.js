@@ -2,6 +2,7 @@ self.addEventListener('install', ev => {
   const data = caches.open('cache')
     .then(cache => cache.addAll([
       '/',
+      '/manifest.json',
       '/favicon.ico',
       '/apple-touch-icon.png',
       '/styles/main.css',
